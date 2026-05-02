@@ -1,4 +1,5 @@
 async function generateProposal() {
+  const proposalDate = document.getElementById('proposalDate').value;
   const company = document.getElementById('company').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -22,7 +23,7 @@ const fullClientAddress = `${clientAddress}, ${clientCity}, ${clientState} ${cli
  if (
   !company || !phone || !email || !address || !city || !state || !zip ||
   !clientFirst || !clientLast || !clientAddress || !clientCity || !clientState || !clientZip ||
-  !jobType || !details || !price || !timeline
+  !jobType || !details || !price || !timeline || !proposalDate 
 ) {
   document.getElementById('status').textContent = 'Please fill in all fields before generating your proposal.';
   return;
