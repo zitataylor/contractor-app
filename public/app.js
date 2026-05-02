@@ -1,5 +1,4 @@
 async function generateProposal() {
-  const proposalDate = document.getElementById('proposalDate').value;
   const company = document.getElementById('company').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -23,7 +22,7 @@ const fullClientAddress = `${clientAddress}, ${clientCity}, ${clientState} ${cli
  if (
   !company || !phone || !email || !address || !city || !state || !zip ||
   !clientFirst || !clientLast || !clientAddress || !clientCity || !clientState || !clientZip ||
-  !jobType || !details || !price || !timeline || !proposalDate 
+  !jobType || !details || !price || !timeline
 ) {
   document.getElementById('status').textContent = 'Please fill in all fields before generating your proposal.';
   return;
@@ -38,7 +37,7 @@ const fullClientAddress = `${clientAddress}, ${clientCity}, ${clientState} ${cli
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline, proposalDate })
+      body: JSON.stringify({ company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline })
     });
 
     const data = await response.json();
@@ -58,4 +57,9 @@ function copyProposal() {
   const btn = event.target;
   btn.textContent = 'Copied!';
   setTimeout(() => btn.textContent = 'Copy', 2000);
+}
+
+function emailProposal() {
+  const text = document.getElementById('output').textContent;
+  window.location.href = `mailto:?subject=Proposal&body=${encodeURIComponent(text)}`;
 }
