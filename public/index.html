@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrendLocker AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+  
+  TrendLocker <span>AI</span>
+</div>
+  </header>
+
+  <div class="hero">
+    <h1>Create Proposals<br/><span>That Help You Land More Jobs</span></h1>
+    <p>Stop wasting time writing proposals. Generate clean, client-ready proposals in seconds and get back to the job.</p>
+    <p class="trust">Send clean, professional proposals faster and get paid sooner.</p>
+  </div>
+
+  <div class="container">
+  <div class="card">
+    <p class="sub">Create clean, professional proposals for any job.</p> <br>
+    <div class="card-title">Enter Job Details</div>
+    
+
+    <!-- START WITH VALUE -->
+    <div class="field">
+      <label>Job type</label>
+      <select id="jobType">
+        <option value="">Select a job type...</option>
+        <option>Bathroom remodel</option>
+        <option>Kitchen remodel</option>
+        <option>Roof replacement</option>
+        <option>Deck installation</option>
+        <option>Flooring installation</option>
+        <option>Painting (interior)</option>
+        <option>Painting (exterior)</option>
+        <option>HVAC installation</option>
+        <option>Electrical work</option>
+        <option>Plumbing</option>
+        <option>Concrete Repair</option>
+        <option>Pavers</option>
+        <option>Concrete driveway</option>
+        <option>Concrete slab</option>
+        <option>Concrete patio</option>
+        <option>Stamped concrete</option>
+        <option>General contracting</option>
+        <option>Other (explain in job details)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Job details</label>
+      <textarea id="details" placeholder="Describe the work..."></textarea>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Estimated price ($)</label>
+        <input type="text" id="price" placeholder="e.g. 4500" />
+      </div>
+      <div class="field">
+        <label>Estimated timeline</label>
+        <input type="text" id="timeline" placeholder="e.g. 1-14 days" />
+      </div>
+    </div>
+
+    <!-- CLIENT INFO -->
+    <div class="row">
+      <div class="field">
+        <label>Client first name</label>
+        <input type="text" id="clientFirst" />
+      </div>
+      <div class="field">
+        <label>Client last name</label>
+        <input type="text" id="clientLast" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Client street address</label>
+        <input type="text" id="clientAddress" />
+      </div>
+      <div class="field">
+        <label>Client city</label>
+        <input type="text" id="clientCity" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Client state</label>
+        <input type="text" id="clientState" />
+      </div>
+      <div class="field">
+        <label>Client ZIP code</label>
+        <input type="text" id="clientZip" />
+      </div>
+    </div>
+
+    <!-- YOUR INFO LAST -->
+    <div class="row">
+      <div class="field">
+        <label>Your company name</label>
+        <input type="text" id="company" />
+      </div>
+      <div class="field">
+        <label>Your phone number</label>
+        <input type="text" id="phone" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Your email</label>
+        <input type="text" id="email" />
+      </div>
+      <div class="field">
+        <label>Your street address</label>
+        <input type="text" id="address" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Your city</label>
+        <input type="text" id="city" />
+      </div>
+      <div class="field">
+        <label>Your state</label>
+        <input type="text" id="state" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Your ZIP code</label>
+        <input type="text" id="zip" />
+      </div>
+      <div class="field"></div>
+    </div> <br>
+
+    <button class="btn" id="generateBtn" onclick="generateProposal()">
+      Generate My Proposal
+    </button>
+
+    <div class="status" id="status"></div>
+  </div>
+
+
+
+  <div class="output-card" id="outputCard">
+    <div class="output-header">
+      <div class="output-title">Your Proposal</div>
+      <button class="copy-btn" onclick="copyProposal()">Copy</button>
+    </div>
+
+
+    <div class="output-text" id="output"></div>
+  </div>
+</div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

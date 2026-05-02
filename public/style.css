@@ -1,0 +1,250 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0f1e;
+  color: #f0f4ff;
+  min-height: 100vh;
+}
+
+header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f0f4ff;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: #f5a623;
+}
+
+.badge {
+  background: rgba(245,166,35,0.15);
+  color: #f5a623;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(245,166,35,0.3);
+  letter-spacing: 0.5px;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 2rem 3rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+
+.hero h1 span {
+  color: #f5a623;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: rgba(240,244,255,0.6);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.card {
+  background: #111827;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f5a623;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(240,244,255,0.5);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: #0a0f1e;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #f0f4ff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #f5a623;
+}
+
+select option {
+  background: #111827;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn {
+  width: 100%;
+  padding: 1rem;
+  background: #f5a623;
+  color: #0a0f1e;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 0.5rem;
+  box-shadow: 0 10px 25px rgba(245,166,35,0.2);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.output-card {
+  background: #111827;
+  border: 1px solid rgba(245,166,35,0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  display: none;
+}
+
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.output-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f5a623;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.copy-btn {
+  background: rgba(245,166,35,0.1);
+  border: 1px solid rgba(245,166,35,0.3);
+  color: #f5a623;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: rgba(245,166,35,0.2);
+}
+
+.output-text {
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(240,244,255,0.85);
+}
+
+.status {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(240,244,255,0.4);
+  margin-top: 0.75rem;
+  min-height: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.hero .trust {
+  color: #f5a623;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.sub {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgba(240, 252, 255, 0.7);
+  font-size: 0.95rem;
+}
