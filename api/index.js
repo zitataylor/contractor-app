@@ -30,7 +30,7 @@ Project Details:
 - Total Price: $${price}
 - Timeline: ${timeline}
 
-Write a clean professional proposal. Do not include a date anywhere in the letter. Use the company name as the heading, not the words "Contractor Proposal". Include: contractor contact info at the top, client name and address, intro paragraph, scope of work, pricing, timeline, payment terms (50% upfront 50% on completion), 30 day validity clause, and a closing signature block with the contractor's name, title, phone and email. Plain text only, no markdown, no asterisks.`;
+Write a clean professional proposal. Do not include a date anywhere in the letter. Use the company name as the heading, not the words "Contractor Proposal". Include: - Date: ${proposalDate}, contractor contact info at the top, client name and address, intro paragraph, scope of work, pricing, timeline, payment terms (50% upfront 50% on completion), 30 day validity clause, and a closing signature block with the contractor's name, title, phone and email. Plain text only, no markdown, no asterisks.`;
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
