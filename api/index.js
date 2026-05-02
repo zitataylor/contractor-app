@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/generate', async (req, res) => {
-  const { company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline } = req.body;
+  const { company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline, proposalDate } = req.body;
 
   const prompt = `Write a professional contractor proposal letter with the following details:
 
