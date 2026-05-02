@@ -38,7 +38,7 @@ const fullClientAddress = `${clientAddress}, ${clientCity}, ${clientState} ${cli
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline })
+      body: JSON.stringify({ company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline, proposalDate })
     });
 
     const data = await response.json();
