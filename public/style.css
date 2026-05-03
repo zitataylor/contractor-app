@@ -251,6 +251,7 @@ textarea {
 }
 
 .subscribe-btn {
+  text-align: center
   display: block;
   width: auto;
   padding: 1rem;
