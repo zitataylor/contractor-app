@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/generate', async (req, res) => {
-  const { company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline } = req.body;
+  const { company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline, proposalDate } = req.body;
 
 
   const prompt = `Write a professional contractor proposal letter with the following details:
@@ -33,7 +33,7 @@ Project Details:
 - Total Price: $${price}
 - Timeline: ${timeline}
 
- Write a clean professional proposal. Use the company name as the heading, not the words "Contractor Proposal". Include: contractor contact info at the top, client name and address, intro paragraph, scope of work, pricing, timeline, payment terms (50% upfront 50% on completion), 30 day validity clause, and a closing signature block with the contractor's name, title, phone and email. Plain text only, no markdown, no asterisks.`;
+ Write a clean professional proposal. Use the company name as the heading, not the words "Contractor Proposal". Include: contractor contact info at the top, - Date: ${proposalDate}, client name and address, intro paragraph, scope of work, pricing, timeline, payment terms (50% upfront 50% on completion), 30 day validity clause, and a closing signature block with the contractor's name, title, phone and email. Plain text only, no markdown, no asterisks.`;
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
