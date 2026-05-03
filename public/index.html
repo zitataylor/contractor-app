@@ -25,6 +25,15 @@
 <button class="subscribe-btn" onclick="subscribe()">Subscribe for Unlimited Proposals — $19.99/mo</button>
   <div class="container">
   <div class="card">
+    <div id="accessGate">
+  <p class="sub">Enter the email you subscribed with to access the proposal generator.</p>
+  <div class="field">
+    <label>Subscriber email</label>
+    <input type="text" id="subscriberEmail" placeholder="your@email.com" />
+  </div>
+  <button class="btn" onclick="verifyAccess()">Unlock Generator</button>
+</div>
+<div id="proposalForm" style="display:none;">
     <p class="sub">Create clean, professional proposals for any job.</p> <br>
     <div class="card-title">Enter Job Details</div>
     
@@ -157,6 +166,7 @@
 
 <p class="proposal-tip">Copy your proposal and paste it into an email, Word doc, or PDF to send to your client.</p> 
     <button class="subscribe-btn" onclick="subscribe()">Subscribe for Unlimited Proposals — $19.99/mo</button>
+  </div>
     <div class="status" id="status"></div>
   </div>
 
