@@ -252,10 +252,10 @@ textarea {
 
 .subscribe-btn {
   display: block;
-  width: 100%;
+  width: auto;
   padding: 1rem;
-  background: transparent;
-  color: #f5a623;
+  background: #f5a623;
+  color: #0a0f1e;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 700;
@@ -264,6 +264,7 @@ textarea {
   cursor: pointer;
   margin-top: 1rem;
   transition: background 0.2s, color 0.2s;
+  display: inline-block
 }
 .subscribe-btn:hover {
   background: #f5a623;
