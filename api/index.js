@@ -85,4 +85,17 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
   res.json({ received: true });
 });
 
+app.post('/api/verify', async (req, res) => {
+  const { email } = req.body;
+  const { createClient } = require('@supabase/supabase-js');
+  const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+  const { data } = await supabase.from('Trendlockeraisubscribers').select('status').eq('email', email).single();
+  if (data && data.status === 'active') {
+    res.json({ subscribed: true });
+  } else {
+    res.json({ subscribed: false });
+  }
+});
+
+
 module.exports = app;
