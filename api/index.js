@@ -83,16 +83,18 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
  if (event.type === 'customer.subscription.created') {
-    const customerId = event.data.object.customer;
-    const customer = await stripe.customers.retrieve(customerId);
-    const email = customer.email;
-    const { createClient } = require('@supabase/supabase-js');
-    const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-    .upsert(
-  { email, status: 'active', stripe_customer_id: customerId },
-  { onConflict: 'email' }
-);
-  }
+  const customerId = event.data.object.customer;
+  const customer = await stripe.customers.retrieve(customerId);
+  const email = customer.email;
+
+  const { createClient } = require('@supabase/supabase-js');
+  const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+
+  await supabase.from('Trendlockeraisubscribers').upsert(
+    { email, status: 'active', stripe_customer_id: customerId },
+    { onConflict: 'email' }
+  );
+}
 
 if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
@@ -100,10 +102,7 @@ if (event.type === 'checkout.session.completed') {
     const customerId = session.customer;
     const { createClient } = require('@supabase/supabase-js');
     const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-    await supabase.from('Trendlockeraisubscribers').upsert(
-  { email, status: 'active', stripe_customer_id: customerId },
-  { onConflict: 'email' }
-);
+   await supabase.from('Trendlockeraisubscribers').upsert({ email, status: 'active', stripe_customer_id: customerId }, { onConflict: 'email' });
   }
   
 
