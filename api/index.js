@@ -74,9 +74,13 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
   } catch (err) {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
-  if (event.type === 'customer.subscription.created') {
-    const email = event.data.object.customer_email;
-    console.log('New subscriber:', email);
+ if (event.type === 'customer.subscription.created') {
+    const customerId = event.data.object.customer;
+    const customer = await stripe.customers.retrieve(customerId);
+    const email = customer.email;
+    const { createClient } = require('@supabase/supabase-js');
+    const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+    await supabase.from('Trendlockeraisubscribers').insert({ email, status: 'active', stripe_customer_id: customerId });
   }
   res.json({ received: true });
 });
