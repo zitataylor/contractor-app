@@ -83,6 +83,16 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
     await supabase.from('Trendlockeraisubscribers').insert({ email, status: 'active', stripe_customer_id: customerId });
   }
 
+if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+    const email = session.customer_details.email;
+    const customerId = session.customer;
+    const { createClient } = require('@supabase/supabase-js');
+    const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+    await supabase.from('Trendlockeraisubscribers').insert({ email, status: 'active', stripe_customer_id: customerId });
+  }
+  
+
 if (event.type === 'customer.subscription.deleted') {
     const customerId = event.data.object.customer;
     const { createClient } = require('@supabase/supabase-js');
