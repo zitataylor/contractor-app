@@ -73,3 +73,23 @@ async function subscribe() {
   const data = await response.json();
   window.location.href = data.url;
 }
+
+async function verifyAccess() {
+  const email = document.getElementById('subscriberEmail').value.trim();
+  if (!email) {
+    alert('Please enter your email.');
+    return;
+  }
+  const response = await fetch('/api/verify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  const data = await response.json();
+  if (data.subscribed) {
+    document.getElementById('accessGate').style.display = 'none';
+    document.getElementById('proposalForm').style.display = 'block';
+  } else {
+    alert('No active subscription found for this email. Please subscribe first.');
+  }
+}
