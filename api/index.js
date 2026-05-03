@@ -82,7 +82,10 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
     const email = customer.email;
     const { createClient } = require('@supabase/supabase-js');
     const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-    await supabase.from('Trendlockeraisubscribers').insert({ email, status: 'active', stripe_customer_id: customerId });
+    .upsert(
+  { email, status: 'active', stripe_customer_id: customerId },
+  { onConflict: 'email' }
+);
   }
 
 if (event.type === 'checkout.session.completed') {
@@ -91,7 +94,10 @@ if (event.type === 'checkout.session.completed') {
     const customerId = session.customer;
     const { createClient } = require('@supabase/supabase-js');
     const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-    await supabase.from('Trendlockeraisubscribers').insert({ email, status: 'active', stripe_customer_id: customerId });
+    await supabase.from('Trendlockeraisubscribers').upsert(
+  { email, status: 'active', stripe_customer_id: customerId },
+  { onConflict: 'email' }
+);
   }
   
 
