@@ -250,4 +250,11 @@ textarea {
   font-size: 0.95rem;
 }
 
-
+async function subscribe() {
+  const response = await fetch('/api/checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  const data = await response.json();
+  window.location.href = data.url;
+}
