@@ -54,4 +54,15 @@ Project Details:
   res.json({ proposal: text });
 });
 
+app.post('/api/checkout', async (req, res) => {
+  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+  const session = await stripe.checkout.sessions.create({
+    mode: 'subscription',
+    line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
+    success_url: 'https://www.trendlockerai.com/success',
+    cancel_url: 'https://www.trendlockerai.com/',
+  });
+  res.json({ url: session.url });
+});
+
 module.exports = app;
