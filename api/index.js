@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
+app.get('/success', (req, res) => {
+  res.sendFile(path.join(__dirname, '../success.html'));
+});
+
 app.post('/api/generate', async (req, res) => {
   const { company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline, proposalDate } = req.body;
 
