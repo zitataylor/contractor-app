@@ -65,4 +65,20 @@ app.post('/api/checkout', async (req, res) => {
   res.json({ url: session.url });
 });
 
+app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, res) => {
+  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+  const sig = req.headers['stripe-signature'];
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+  } catch (err) {
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+  if (event.type === 'customer.subscription.created') {
+    const email = event.data.object.customer_email;
+    console.log('New subscriber:', email);
+  }
+  res.json({ received: true });
+});
+
 module.exports = app;
