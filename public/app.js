@@ -1,4 +1,5 @@
 async function generateProposal() {
+  const proposalDate = document.getElementById('proposalDate').value;
   const company = document.getElementById('company').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -37,7 +38,7 @@ const fullClientAddress = `${clientAddress}, ${clientCity}, ${clientState} ${cli
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline })
+      body: JSON.stringify({ company, phone, email, address, city, state, zip, client, fullClientAddress, jobType, details, price, timeline, proposalDate })
     });
 
     const data = await response.json();
