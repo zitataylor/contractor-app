@@ -1,9 +1,3 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/index.js" }],
-  "headers": [
-    {
-      "source": "/api/webhook",
-      "headers": [{ "key": "Content-Type", "value": "application/json" }]
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index.js" }]
 }
