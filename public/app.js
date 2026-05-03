@@ -22,7 +22,7 @@ const fullClientAddress = `${clientAddress}, ${clientCity}, ${clientState} ${cli
  if (
   !company || !phone || !email || !address || !city || !state || !zip ||
   !clientFirst || !clientLast || !clientAddress || !clientCity || !clientState || !clientZip ||
-  !jobType || !details || !price || !timeline
+  !jobType || !details || !price || !timeline || proposalDate
 ) {
   document.getElementById('status').textContent = 'Please fill in all fields before generating your proposal.';
   return;
