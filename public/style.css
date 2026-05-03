@@ -265,7 +265,10 @@ textarea {
   margin-top: 1rem;
   transition: background 0.2s, color 0.2s;
   display: inline-block
+  box-shadow: 0 8px 20px rgba(245,166,35,0.4);
 }
+transform: translateY(-2px);
+box-shadow: 0 12px 28px rgba(245,166,35,0.5);
 .subscribe-btn:hover {
   background: #f5a623;
   color: #0a0f1e;
