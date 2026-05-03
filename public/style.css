@@ -208,6 +208,7 @@ textarea {
   white-space: pre-wrap;
   font-size: 0.95rem;
   line-height: 1.8;
+  text-align: left;
   color: rgba(240,244,255,0.85);
 }
 
@@ -253,5 +254,4 @@ textarea {
   color: rgba(240,244,255,0.6);
   font-size: 14px;
   margin-top: 10px;
-  text-align: center
 }
