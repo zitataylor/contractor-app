@@ -64,3 +64,12 @@ function emailProposal() {
   const text = document.getElementById('output').textContent;
   window.location.href = `mailto:?subject=Proposal&body=${encodeURIComponent(text)}`;
 }
+
+async function subscribe() {
+  const response = await fetch('/api/checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  const data = await response.json();
+  window.location.href = data.url;
+}
