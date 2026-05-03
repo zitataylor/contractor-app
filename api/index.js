@@ -57,16 +57,22 @@ Project Details:
 });
 
 app.post('/api/checkout', async (req, res) => {
-  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-  const session = await stripe.checkout.sessions.create({
-    mode: 'subscription',
-    line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
-    success_url: 'https://www.trendlockerai.com/success',
-    cancel_url: 'https://www.trendlockerai.com/',
-  });
-  res.json({ url: session.url });
-});
+  try {
+    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
+      success_url: 'https://www.trendlockerai.com/success',
+      cancel_url: 'https://www.trendlockerai.com/',
+    });
+
+    res.json({ url: session.url });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
 app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, res) => {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
   const sig = req.headers['stripe-signature'];
