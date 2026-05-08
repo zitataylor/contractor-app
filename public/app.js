@@ -45,6 +45,7 @@ const fullClientAddress = `${clientAddress}, ${clientCity}, ${clientState} ${cli
     document.getElementById('output').textContent = data.proposal.replace(/\*\*/g, '');
     document.getElementById('outputCard').style.display = 'block';
     document.getElementById('status').textContent = '';
+    document.getElementById('proposalForm').reset();
   } catch (error) {
     document.getElementById('status').textContent = 'Something went wrong. Please try again.';
   }
