@@ -107,8 +107,15 @@ if (event.type === 'checkout.session.completed') {
     const customerId = session.customer;
     const { createClient } = require('@supabase/supabase-js');
     const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
-   await supabase.from('Trendlockeraisubscribers').upsert({ email, status: 'active', stripe_customer_id: customerId }, { onConflict: 'email' });
-  }
+   const { data, error } = await supabase
+  .from('Trendlockeraisubscribers')
+  .upsert(
+    { email, status: 'active', stripe_customer_id: customerId },
+    { onConflict: 'email' }
+  );
+
+console.log('RESULT:', data);
+console.log('ERROR:', error);
   
 
 if (event.type === 'customer.subscription.deleted') {
