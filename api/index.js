@@ -104,7 +104,7 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
 if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
     console.log('EMAIL:', session.customer_details?.email);
-    const customer = await stripe.customers.retrieve(session.customer);
+   
     const email = session.customer_details.email;
     const customerId = session.customer;
     const { createClient } = require('@supabase/supabase-js');
