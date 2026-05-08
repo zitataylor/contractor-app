@@ -86,6 +86,7 @@ app.post('/api/webhook', express.raw({type: 'application/json'}), async (req, re
   } catch (err) {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
+  
  if (event.type === 'customer.subscription.created') {
   const customerId = event.data.object.customer;
   const customer = await stripe.customers.retrieve(customerId);
@@ -117,7 +118,7 @@ if (event.type === 'checkout.session.completed') {
 
 console.log('RESULT:', data);
 console.log('ERROR:', error);
-  
+} 
 
 if (event.type === 'customer.subscription.deleted') {
     const customerId = event.data.object.customer;
